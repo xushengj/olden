@@ -12,8 +12,6 @@
  *
  */
 
-void *malloc(unsigned Size);
-
 typedef struct demand {
   double P;
   double Q;

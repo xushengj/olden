@@ -1,3 +1,5 @@
+CFLAGS ?= -O2 -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -Wno-parentheses-equality -Wno-implicit-int-float-conversion
+
 bench = bh bisort em3d health mst perimeter power treeadd tsp voronoi
 bins = $(addsuffix .exe, $(bench))
 

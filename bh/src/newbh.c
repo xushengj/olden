@@ -1188,12 +1188,12 @@ void ptree(nodeptr n, int level)
   
   if (n != NULL) {
     if (Type(n) == BODY) {
-      chatting("%2d BODY@%x %f, %f, %f\n", level, n, Pos(n)[0], Pos(n)[1], Pos(n)[2]);
+      chatting("%2d BODY@%p %f, %f, %f\n", level, n, Pos(n)[0], Pos(n)[1], Pos(n)[2]);
     }
     else /* CELL */ {
       int i;
 
-      chatting("%2d CELL@%x %f, %f, %f\n", level, n,Pos(n)[0], Pos(n)[1], Pos(n)[2]);
+      chatting("%2d CELL@%p %f, %f, %f\n", level, n,Pos(n)[0], Pos(n)[1], Pos(n)[2]);
       for (i = 0; i < NSUB; i++) {
 	r = Subp((cellptr) n)[i];
 	ptree(r, level+1);

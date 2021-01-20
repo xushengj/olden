@@ -11,6 +11,7 @@
  */
 
 #include "power.h"
+#include <stdlib.h>
 
 Root build_tree() 
 {

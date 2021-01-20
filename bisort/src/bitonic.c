@@ -5,6 +5,7 @@
 #include "node.h"   /* Node Definition */
 #include "proc.h"   /* Procedure Types/Nums */
 #include <stdio.h>
+#include <stdlib.h>
 
 #define CONST_m1 10000
 #define CONST_b 31415821
@@ -12,7 +13,7 @@
 
 int NumNodes, NDim;
 
-int random(int);
+int bitonic_random(int);
 
 int flag=0,foo=0;
 
@@ -49,11 +50,11 @@ int mult(int p, int q) {
 
 /* Generate the nth random # */
 int skiprand(int seed, int n) {
-  for (; n; n--) seed=random(seed);
+  for (; n; n--) seed=bitonic_random(seed);
   return seed;
 }
 
-int random(int seed) {
+int bitonic_random(int seed) {
   return mult(seed,CONST_b)+1;
 }
 
@@ -68,7 +69,7 @@ HANDLE* RandTree(int n, int seed, int node, int level) {
       newnode = node + (1 <<  (NDim-level-1));
     else
       newnode = node;
-    seed = random(seed);
+    seed = bitonic_random(seed);
     next_val=seed % RANGE;
     NewNode(h,next_val,node);
     f_left.value = RandTree((n/2),seed,newnode,level+1);
@@ -246,7 +247,7 @@ int main(int argc, char **argv) {
   printf("Bisort with %d size of dim %d\n", n, NDim);
 
   h = RandTree(n,12345768,0,0);
-  sval = random(245867) % RANGE;
+  sval = bitonic_random(245867) % RANGE;
   if (flag) {
     InOrder(h);
     printf("%d\n",sval);
